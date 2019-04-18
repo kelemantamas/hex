@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cell.cs" />
+    <Compile Include="HexBoard.cs" />
+    <Compile Include="HexBoardNeighbours.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Minimax.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
