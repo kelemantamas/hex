@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace HexGame
 {
+    public enum Occupied
+    {
+        Empty=0,
+        PlayerX,
+        PlayerY
+    }
     public class HexBoard
     {
         private Cell[,] cells;
