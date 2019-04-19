@@ -51,6 +51,48 @@ namespace HexGame
             return result.ToArray();
         }
 
+        public Location[] BetweenEdge(Location loc, bool playerX)
+        {
+            if (playerX)
+            {
+                if ((loc.x == 1) && (loc.x < (this.boardSize - 1)))
+                {
+                    Location[] result = new Location[2];
+                    result[0] = new Location(loc.x, 0);
+                    result[1] = new Location(loc.x + 1, 0);
+                    return result;
+                }
+
+                if ((loc.y == this.boardSize - 2) && (loc.x > 0))
+                {
+                    Location[] result = new Location[2];
+                    result[0] = new Location(loc.x - 1, this.boardSize - 1);
+                    result[1] = new Location(loc.x, this.boardSize - 1);
+                    return result;
+                }
+
+                return new Location[0];
+            }
+
+            if ((loc.x == 1) && (loc.y < (this.boardSize - 1)))
+            {
+                Location[] result = new Location[2];
+                result[0] = new Location(0, loc.y);
+                result[1] = new Location(0, loc.y + 1);
+                return result;
+            }
+
+            if ((loc.x == this.boardSize - 2) && (loc.y > 0))
+            {
+                Location[] result = new Location[2];
+                result[0] = new Location(this.boardSize - 1, loc.y - 1);
+                result[1] = new Location(this.boardSize - 1, loc.y);
+                return result;
+            }
+
+            return new Location[0];
+        }
+
         public Location[][] Neighbours2(Location location)
         {
             List<Location[]> result = new List<Location[]>();

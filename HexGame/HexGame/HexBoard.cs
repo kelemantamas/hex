@@ -51,6 +51,11 @@ namespace HexGame
             InitNeighbours();
         }
 
+        public Cell GetCellAt(Location loc)
+        {
+            return this.cells[loc.x, loc.y];
+        }
+
         public void CopyStateFrom (HexBoard otherBoard)
         {
             if (otherBoard != null)
