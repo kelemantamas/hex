@@ -9,6 +9,11 @@ namespace HexGame
     public class Cell
     {
         private Location location;
+        public Location Location
+        {
+            get;
+            set;
+        }
         public Occupied IsOccupied { get; set; }
 
         public Cell(Location location)
@@ -24,6 +29,15 @@ namespace HexGame
                 this.location = originalCell.location;
                 this.IsOccupied = originalCell.IsOccupied;
             }
+        }
+
+        public int x
+        {
+            get { return location.x; }
+        }
+        public int y
+        {
+            get { return location.y; }
         }
     }
 }

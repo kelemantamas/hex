@@ -10,7 +10,7 @@ namespace HexGame
     {
         private Cell[,] cells;
         private Cell[,][] neighbours;
-        private Cell[,][][] neghbours2;
+        private Cell[,][][] neighbours2;
         private Cell[,][] playerX;
         private Cell[,][] playerY;
         public int Size { get; set; }
@@ -72,23 +72,23 @@ namespace HexGame
         {
             HexBoardNeighbours neighboursCalc = new HexBoardNeighbours(Size);
             this.neighbours = new Cell[Size, Size][];
-            this.neighbours2 = new Cell[Size, Size][][];
+            this.neighbours2 = new Cell[this.Size, this.Size][][];
             this.playerX = new Cell[Size, Size][];
             this.playerY = new Cell[Size, Size][];
 
             foreach (Cell cell in this.cells)
             {
                 Location[] neigbourLocations = neighboursCalc.Neighbours(cell.Location);
-                this.neighbours[cell.X, cell.Y] = this.GetCellAt(neigbourLocations);
+                this.neighbours[cell.x, cell.y] = this.GetCellAt(neigbourLocations);
 
                 Location[][] neighbour2Locations = neighboursCalc.Neighbours2(cell.Location);
-                this.neighbours2[cell.X, cell.Y] = this.GetCellsAt(neighbour2Locations);
+                this.neighbours2[cell.x, cell.y] = this.GetCellsAt(neighbour2Locations);
 
                 Location[] localPlayerXBetweenEdge = neighboursCalc.BetweenEdge(cell.Location, true);
-                this.playerX[cell.X, cell.Y] = this.GetCellAt(localPlayerXBetweenEdge);
+                this.playerX[cell.x, cell.y] = this.GetCellAt(localPlayerXBetweenEdge);
 
                 Location[] localPlayerYBetweenEdge = neighboursCalc.BetweenEdge(cell.Location, false);
-                this.playerY[cell.X, cell.Y] = this.GetCellAt(localPlayerYBetweenEdge);
+                this.playerY[cell.x, cell.y] = this.GetCellAt(localPlayerYBetweenEdge);
             }
 
         }
@@ -108,5 +108,19 @@ namespace HexGame
 
             return result;
         }
+
+        public Cell[][] GetCellsAt(Location[][] locs)
+        {
+            Cell[][] result = new Cell[locs.GetLength(0)][];
+
+            for (int loopIndex = 0; loopIndex < locs.GetLength(0); loopIndex++)
+            {
+                result[loopIndex] = this.GetCellAt(locs[loopIndex]);
+            }
+
+            return result;
+        }
+
+
     }
 }
