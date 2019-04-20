@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hex.Board", "Hex.Board\Hex.Board.csproj", "{0BF3698A-74D1-48BE-95E5-3C66148DAB3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hex.Engine", "Hex.Engine\Hex.Engine.csproj", "{F192665E-60E8-4BB3-9C56-07A38539D845}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0BF3698A-74D1-48BE-95E5-3C66148DAB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BF3698A-74D1-48BE-95E5-3C66148DAB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BF3698A-74D1-48BE-95E5-3C66148DAB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F192665E-60E8-4BB3-9C56-07A38539D845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F192665E-60E8-4BB3-9C56-07A38539D845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F192665E-60E8-4BB3-9C56-07A38539D845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F192665E-60E8-4BB3-9C56-07A38539D845}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
