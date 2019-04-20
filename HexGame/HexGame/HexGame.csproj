@@ -43,9 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardCache.cs" />
+    <Compile Include="CandidateMoves\CandidateMovesAll.cs" />
+    <Compile Include="CandidateMoves\CandidateMovesAllSorted.cs" />
+    <Compile Include="CandidateMoves\CandidateMovesSelective.cs" />
+    <Compile Include="CandidateMoves\ICandidateMoves.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="GoodMoves.cs" />
     <Compile Include="HexBoard.cs" />
+    <Compile Include="HexBoardMainModel.cs" />
     <Compile Include="HexBoardNeighbours.cs" />
+    <Compile Include="HexGame.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Minimax.cs" />
     <Compile Include="Program.cs" />

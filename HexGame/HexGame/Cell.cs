@@ -22,6 +22,11 @@ namespace HexGame
             this.IsOccupied = Occupied.Empty;
         }
 
+        public bool IsEmpty()
+        {
+            return this.IsOccupied == Occupied.Empty;
+        }
+
         public Cell(Cell originalCell)
         {
             if (originalCell != null)

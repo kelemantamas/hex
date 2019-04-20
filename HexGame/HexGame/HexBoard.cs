@@ -132,6 +132,40 @@ namespace HexGame
             return result;
         }
 
+        public Cell[,] GetCells()
+        {
+            return this.cells;
+        }
+
+        public Cell[] Neighbours(Location loc)
+        {
+            return this.neighbours[loc.x, loc.y];
+        }
+
+        public Cell[][] Neighbours2(Cell cell)
+        {
+            return this.Neighbours2(cell.Location);
+        }
+        public Cell[][] Neighbours2(Location loc)
+        {
+            return this.neighbours2[loc.X, loc.Y];
+        }
+
+        public Cell[] Neighbours(Cell cell)
+        {
+            return this.Neighbours(cell.Location);
+        }
+
+        public IEnumerable<Location> EmptyCells()
+        {
+            foreach (Cell cell in this.cells)
+            {
+                if (cell.IsEmpty())
+                {
+                    yield return cell.Location;
+                }
+            }
+        }
 
     }
 }
