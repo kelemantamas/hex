@@ -126,13 +126,15 @@ namespace Hex.Engine.Lookahead
         /// <param name="alpha">alpha value used in alpha-beta pruning</param>
         /// <param name="beta">beta value used in alpha-beta pruning</param>
         /// <returns>the score of the board and best move location</returns>
-        private MinimaxResult ScoreBoard(
-            int lookahead,
-            HexBoard stateBoard,
-            bool isPlayerX,
-            int alpha,
-            int beta)
+        private MinimaxResult ScoreBoard(int lookahead, HexBoard stateBoard, bool isPlayerX, int alpha, int beta)
         {
+            MinimaxResult moveScore;
+            PathLengthBase staticAnalysis;
+            if (lookahead==0)
+            {
+                staticAnalysis = this.pathLengthFactory.CreatePathLength(stateBoard);
+                moveScore = new MinimaxResult(staticAnalysis.SituationScore());
+            }
             this.CountBoards++;
 
             MinimaxResult bestResult = null;
@@ -153,9 +155,8 @@ namespace Hex.Engine.Lookahead
                 testBoard.CopyStateFrom(stateBoard);
 
                 testBoard.PlayMove(move, isPlayerX);
-                MinimaxResult moveScore;
 
-                PathLengthBase staticAnalysis = this.pathLengthFactory.CreatePathLength(testBoard);
+                staticAnalysis = this.pathLengthFactory.CreatePathLength(testBoard);
                 int situationScore = staticAnalysis.SituationScore();
 
                 if (lookahead <= 1)
