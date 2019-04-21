@@ -223,6 +223,8 @@ namespace Hex.Engine.Lookahead
             get;
             set;
         }
+        public TimeSpan MoveTime { get; set; }
+
         public Minimax(HexBoard board, GoodMoves goodMoves, ICandidateMoves candidateMovesFinder)
         {
             this.board = board;
@@ -271,10 +273,11 @@ namespace Hex.Engine.Lookahead
                     board1.CopyStateFrom(board);
                     board1.PlayMove(move, isComputer);
 
-                    MinimaxResult moveScore;
+                    
                     // itt szamolja ki az allast
                     PathLengthBase staticAnalysis = this.pathLengthFactory.CreatePathLength(board1);
                     int situationScore = staticAnalysis.SituationScore();
+                    MinimaxResult moveScore=new MinimaxResult(situationScore);
 
                     if (depth<=1 || MoveScoreConverter.IsWin(situationScore))
                     {
@@ -289,7 +292,7 @@ namespace Hex.Engine.Lookahead
                             moveScore.MoveWins();
                         }
                     }
-                   
+                    
                     moveScore.Move = move;
                     // Itt nezem meg, hogy a minimum kell nekunk, vagy a maximum
                     if (bestResult == null || MoveScoreConverter.MinOrMax(moveScore.Score, bestResult.Score, isComputer))
