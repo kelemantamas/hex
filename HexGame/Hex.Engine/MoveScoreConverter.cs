@@ -13,10 +13,10 @@ namespace Hex.Engine
         private const int ScoreMultiplier = 100;
         private const int MaxDepth = 20;
 
-        public static int ConvertWin(Occupied winner, int depth)
+        public static int ConvertWin(Occupied player, int depth)
         {
-            int result = (WinScore + MaxDepth) - depth;
-            return NegateForPlayerY(result, winner);
+            int result = WinScore + MaxDepth - depth;
+            return NegateForPlayerY(result, player);
         }
 
 
@@ -47,7 +47,7 @@ namespace Hex.Engine
             return positveScore >= WinScore;
         }
 
-        public static bool IsBetterFor(int score1, int score2, bool playerX)
+        public static bool MinOrMax(int score1, int score2, bool playerX)
         {
             if (playerX)
             {
